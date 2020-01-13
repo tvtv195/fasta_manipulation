@@ -1,0 +1,12 @@
+# extract sequences in a list (test file) from fasta
+
+# 1. Use the SCT output files, e.g. lca-contigs.tsv, and search for the tax string of your choice and create a new file 
+# using only the first column, for example:
+grep "Cyanobacteria" lca-contigs.tsv | awk '{print $1}' > lca-contigs.cyanos.tsv
+
+# 2. Load seqtk, for example
+module load seqtk
+
+# 3. Use the seqtk subseq function to extract the sequences fromm your list, for example:
+seqtk subseq A16contigs.fasta  lca-contigs.cyanos.tsv >  A16_subset_contigs.fasta
+
